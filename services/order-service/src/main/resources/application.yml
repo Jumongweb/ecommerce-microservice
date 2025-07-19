@@ -13,3 +13,8 @@ logging:
   level:
     root: INFO
     com.example.order: DEBUG
+
+management:
+  metrics:
+    enable:
+      system: false

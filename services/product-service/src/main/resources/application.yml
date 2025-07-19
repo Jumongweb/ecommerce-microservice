@@ -11,3 +11,8 @@ logging:
   level:
     root: INFO
     com.example.product: DEBUG
+
+management:
+  metrics:
+    enable:
+      system: false
