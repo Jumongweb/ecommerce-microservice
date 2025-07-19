@@ -1,4 +1,4 @@
-FROM maven:3.9-jdk-17-slim AS builder
+FROM maven:3.9.11-eclipse-temurin-17-alpine AS builder
 WORKDIR /app
 COPY ./pom.xml .
 COPY ./src ./src
