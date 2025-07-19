@@ -8,4 +8,4 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=builder /app/target/order-service-0.0.1-SNAPSHOT.jar order-service.jar
 EXPOSE 8002
-ENTRYPOINT ["java", "-jar", "order-service.jar"]
+ENTRYPOINT ["java", "-Dmicrometer.insights.metrics.jvm.cgroup.enabled=false", "-jar", "order-service.jar"]
