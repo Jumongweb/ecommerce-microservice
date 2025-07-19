@@ -8,4 +8,4 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 COPY --from=builder /app/target/api-gateway-0.0.1-SNAPSHOT.jar api-gateway.jar
 EXPOSE 8005
-ENTRYPOINT ["java", "-jar", "api-gateway.jar"]
+ENTRYPOINT ["java", "-Dmicrometer.insights.metrics.jvm.cgroup.enabled=false", "-jar", "api-gateway.jar"]
