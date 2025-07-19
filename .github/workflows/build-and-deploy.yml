@@ -22,8 +22,25 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build with Maven
-        run: mvn clean package -DskipTests
+      - name: Build order-service with Maven
+        run: |
+          cd services/order-service
+          mvn clean package -DskipTests
+
+      - name: Build api-gateway with Maven
+        run: |
+          cd services/api-gateway
+          mvn clean package -DskipTests
+
+      - name: Build product-service with Maven
+        run: |
+          cd services/product-service
+          mvn clean package -DskipTests
+
+      - name: Build eureka-server with Maven
+        run: |
+          cd services/eureka-server
+          mvn clean package -DskipTests
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
@@ -33,18 +50,24 @@ jobs:
 
       - name: Build and push order-service Docker image
         run: |
-          cd order-service
-          docker build -t your-docker-username/order-service:1.0 .
-          docker push your-docker-username/order-service:1.0
+          cd services/order-service
+          docker build -t jumongweb/order-service:1.0 .
+          docker push jumongweb/order-service:1.0
 
       - name: Build and push api-gateway Docker image
         run: |
-          cd api-gateway
+          cd services/api-gateway
           docker build -t jumongweb/api-gateway:1.0 .
           docker push jumongweb/api-gateway:1.0
 
       - name: Build and push product-service Docker image
         run: |
-          cd product-service
+          cd services/product-service
           docker build -t jumongweb/product-service:1.0 .
           docker push jumongweb/product-service:1.0
+
+      - name: Build and push eureka-server Docker image
+        run: |
+          cd services/eureka-server
+          docker build -t jumongweb/eureka-server:1.0 .
+          docker push jumongweb/eureka-server:1.0
