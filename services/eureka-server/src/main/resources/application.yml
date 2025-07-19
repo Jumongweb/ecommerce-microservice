@@ -11,3 +11,8 @@ eureka:
 spring:
   application:
     name: eureka-server
+
+management:
+  metrics:
+    enable:
+      system: false

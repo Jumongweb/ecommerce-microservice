@@ -27,3 +27,8 @@ eureka:
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
+
+management:
+  metrics:
+    enable:
+      system: false
